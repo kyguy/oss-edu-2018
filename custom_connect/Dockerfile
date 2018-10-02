@@ -1,4 +1,6 @@
-FROM strimzi/kafka-connect
+FROM strimzi/kafka-connect:0.7.0
+
+EXPOSE 24224
 
 USER root:root
 
@@ -9,6 +11,8 @@ RUN /bin/bash -c 'source /etc/profile.d/rvm.sh && /usr/local/rvm/rubies/ruby-2.5
 USER 1001:1001
 
 ENV PATH="${PATH}:/usr/local/rvm/rubies/ruby-2.5.1/bin/:/usr/local/rvm/gems/ruby-2.5.1/bin/"
+ENV GEM_PATH="/usr/local/rvm/gems/ruby-2.5.1/"
+ENV GEM_HOME="/usr/local/rvm/gems/ruby-2.5.1/"
 
 # Set labels used in OpenShift to describe the builder images
 LABEL io.openshift.s2i.scripts-url=image:///opt/s2i \
