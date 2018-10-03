@@ -1,0 +1,20 @@
+# The DOCKER_ORG (default is name of the current user) and DOCKER_TAG (based on Git Tag,
+# default latest) variables are used to name the Docker image. DOCKER_REGISTRY identifies
+# the registry where the image will be pushed (default is Docker Hub).
+TOPDIR=$(dir $(lastword $(MAKEFILE_LIST)))
+DOCKERFILE_DIR     ?= ./
+DOCKER_REGISTRY    ?= docker.io
+DOCKER_ORG         ?= $(USER)
+DOCKER_TAG         ?= latest
+
+all: docker_build docker_push
+
+docker_build:
+	# Build Docker image ...
+	@echo "Updating the local Docker image"
+	docker build -q $(DOCKER_BUILD_ARGS) -t $(DOCKER_REGISTRY)/$(DOCKER_ORG)/$(PROJECT_NAME):latest $(DOCKERFILE_DIR)
+
+docker_push: docker_build
+	# Push the tagged image to the registry
+	@echo "Pushing image to $(DOCKER_REGISTRY)/$(DOCKER_ORG)/$(PROJECT_NAME)"
+	docker push $(DOCKER_REGISTRY)/$(DOCKER_ORG)/$(PROJECT_NAME):$(DOCKER_TAG)
