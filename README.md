@@ -12,10 +12,7 @@ Prerequisites:
 
 `oc apply -f 02-simplest-cluster.yaml`
 
-## Kafka Connect S2I
-
-`oc start-build my-connect-cluster-connect --from-dir ./plugins/`
-
 ## TODO
-* Test aggregator -> Kafka Connect thru service
-* 
+* Test Connector sink to ElasticSearch
+* Strip down to bare bones cluster
+* Prometheus integration 
