@@ -12,4 +12,5 @@ fi
 
 export KAFKA_CONNECT_PLUGIN_PATH=/tmp/kafka-plugins
 echo "Starting Kafka Connect with custom plugin directory $KAFKA_CONNECT_PLUGIN_PATH"
-/opt/kafka/kafka_connect_run.sh
+/opt/kafka/kafka_connect_run.sh &
+fluentd -c /tmp/kafka-plugins/s2i/kafka-connect-fluentd/sink-fluentd.conf

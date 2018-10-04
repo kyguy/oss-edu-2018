@@ -13,6 +13,6 @@ Prerequisites:
 `oc apply -f 02-simplest-cluster.yaml`
 
 ## TODO
-* Test Connector sink to ElasticSearch
+* Mount secret into pods
 * Strip down to bare bones cluster
 * Prometheus integration 

@@ -1,2 +1,2 @@
 #!/bin/bash
-oc exec -ti $(oc get pod -l app=my-connect-cluster-connect -o=jsonpath='{.items[0].metadata.name}') -- ./bin/kafka-topics.sh --list --zookeeper localhost:2181
+oc exec -ti $(oc get pods | grep 'my-cluster-kafka-0' | awk '{print $1}') -- ./bin/kafka-topics.sh --list --zookeeper localhost:2181
