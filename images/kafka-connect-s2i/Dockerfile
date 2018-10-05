@@ -10,11 +10,9 @@ ENV PATH="${PATH}:/usr/local/rvm/rubies/ruby-2.5.1/bin/:/usr/local/rvm/gems/ruby
 ENV GEM_PATH="/usr/local/rvm/gems/ruby-2.5.1/"
 ENV GEM_HOME="/usr/local/rvm/gems/ruby-2.5.1/"
 
-RUN /bin/bash -c 'source /etc/profile.d/rvm.sh && /usr/local/rvm/rubies/ruby-2.5.1/bin/gem install fluentd -v "~> 1.2.5" --no-ri --no-rdoc && chmod -R 777 /usr/local/rvm/gems/ruby-2.5.1 && chmod 777 /opt/kafka'
+RUN /bin/bash -c 'source /etc/profile.d/rvm.sh && gem install fluentd -v "~> 1.2.5" --no-ri --no-rdoc && chmod 777 /opt/kafka && gem install bundler && gem install fluent-plugin-elasticsearch && chmod -R 777 /usr/local/rvm/gems/ruby-2.5.1'
 
 USER 1001:1001
-
-RUN /bin/bash -c 'gem install bundler && gem install fluent-plugin-elasticsearch'
 
 # Set labels used in OpenShift to describe the builder images
 LABEL io.openshift.s2i.scripts-url=image:///opt/s2i \
