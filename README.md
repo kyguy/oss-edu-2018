@@ -24,23 +24,17 @@ Load pluggable Kafka Connectors ( specifically, Fluentd source and sink connecto
 
 `./04-load-connect-plugin.sh`
 
-## Forward traffic to Fluentd Connector
-
-Create service to link to Fluentd source connector
-
-`oc apply -f 05-connector-svc.yaml`
-
 ## Apply Logging configuration
 
 Have logging aggregator forward all logs to Fluentd source connector
 
-`oc apply -f 06-logging-cm.yaml`
+`./05-update-fluentd.sh`
 
 ## Activate Connectors
 
 To start pushing and pulling data into Kafka
 
-`./07-connectors.sh start`
+`./06-connectors.sh start`
 
 ## TODO
 * Prometheus integration 

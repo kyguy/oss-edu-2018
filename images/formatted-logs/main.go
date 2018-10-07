@@ -48,6 +48,11 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, fmt.Sprintf("Hello, %s!", name))
 }
 
+func loggyHandler(w http.ResponseWriter, r *http.Request) {
+        logger.WithField("Loggy", 0).Info("( Loggy ) :D ")
+	fmt.Fprintf(w, fmt.Sprintf("Loggy has started the commute!\n"))
+}
+
 func spitLogsHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	if r.Form["logs"] != nil {
@@ -58,10 +63,10 @@ func spitLogsHandler(w http.ResponseWriter, r *http.Request) {
 				fmt.Fprintf(w, "Calm down buddy! Some one has to pay for this ec2 instance!")
 			} else {
 				for i := sequence; i < sequence+numOfLogs; i++ {
-					logger.WithField("sequence", i).Info("iterating in a loop")
+					logger.WithField("Loggy neighbor", i).Info(":)")
 				}
 				sequence += numOfLogs
-				fmt.Fprintf(w, fmt.Sprintf("Num of logs generated: %d", numOfLogs))
+				fmt.Fprintf(w, fmt.Sprintf("Num of logs generated: %d\n", numOfLogs))
 			}
 		}
 	} else {
@@ -85,6 +90,7 @@ func main() {
 	logger.Info("Custom logger created")
 	http.HandleFunc("/", healthHandler)
 	http.HandleFunc("/hello", helloHandler)
+	http.HandleFunc("/loggy", loggyHandler)
 	http.HandleFunc("/generate", spitLogsHandler)
 	http.HandleFunc("/error", generateError)
 

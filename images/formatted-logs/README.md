@@ -1,4 +1,4 @@
-# formatted-log
+# formatted-logs
 Credit: Josef Karasek ( https://github.com/josefkarasek/formatted-logs )
 
 HTTP server which generates logs based on requests
@@ -9,8 +9,10 @@ Prerequisites:
 
 ## build
 
-`go get github.com/sirupsen/logrus`
-`make`
+```
+go get github.com/sirupsen/logrus
+make
+```
 
 ## run
 
@@ -20,4 +22,11 @@ Prerequisites:
 
 From within the pod, run:
 
-`curl http://localhost:8080/generate?logs=10`
+### Loggy
+`curl http://localhost:8080/loggy`
+
+### Loggy Neighbors
+`curl http://localhost:8080/generate?logs=100`
+
+
+
