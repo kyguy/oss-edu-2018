@@ -9,13 +9,13 @@ spec:
   template:
     metadata:
       labels:
-        app: amq-streams-cluster-operator
+        app: strimzi-cluster-operator
         name: strimzi-cluster-operator
     spec:
       serviceAccountName: strimzi-cluster-operator
       containers:
       - name: strimzi-cluster-operator
-        image: registry.access.redhat.com/amqstreams-1-tech-preview/amqstreams10-clusteroperator-openshift:1.0.0-beta
+        image: strimzi/cluster-operator:0.7.0
         imagePullPolicy: IfNotPresent
         env:
         - name: STRIMZI_NAMESPACE

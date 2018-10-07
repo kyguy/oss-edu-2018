@@ -36,5 +36,28 @@ To start pushing and pulling data into Kafka
 
 `./06-connectors.sh start`
 
+## Once built
+
+```
+# Send Loggy through
+./bin/gen-logs.sh loggy
+
+# Observe
+./query-es.sh _cat/indices
+
+# Generate more logs
+./bin/gen-logs.sh 100
+
+```
+
 ## TODO
 * Prometheus integration 
+
+## Cleanup
+```
+./bin/connectors stop
+oc delete kafkaconnects2i my-connect-cluster
+oc delete kafka my-cluster
+# Once those have finished
+oc delete deployments,crds,svc --all
+```
