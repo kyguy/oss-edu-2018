@@ -11,9 +11,6 @@ spec:
       plain: {}
     storage:
       type: ephemeral
-    #storage:
-    #  type: persistent-claim
-    # size: 1Gi
     config:
       log.flush.interval.ms: 1000
       default.replication.factor: 1
@@ -24,6 +21,3 @@ spec:
     replicas: 1
     storage:
       type: ephemeral
-    #storage:
-    #type: persistent-claim
-    #size: 1Gi

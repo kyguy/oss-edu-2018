@@ -1,4 +1,4 @@
-FROM strimzi/kafka-connect:0.7.0
+FROM strimzi/kafka-connect:0.6.0
 
 EXPOSE 24224
 
