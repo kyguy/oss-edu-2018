@@ -9,7 +9,6 @@ POD=logging-es
 CONTAINER=elasticsearch
 COMMAND=($1)
 set -e
-set -o xtrace
 
 exec_in_pod () {
   oc exec -c $CONTAINER -ti $(\

@@ -1,7 +1,7 @@
 #!/bin/bash
 POD=logging-fluentd
 PROJECT=openshift-logging
-CONFIG=./config/start-logging-cm.yaml
+CONFIG=./config/logging-cm.yaml
 oc apply -f $CONFIG -n $PROJECT
 oc delete pod $(
                 oc get pods -n $PROJECT | 
